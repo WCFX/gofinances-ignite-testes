@@ -1,11 +1,13 @@
 import React from "react";
 
+
 import * as S from "./styles";
 
 const Home = () => {
   return (
     <S.Container>
       <S.Header>
+        <S.UserWrapper>
         <S.UserInfo>
           <S.Photo
             source={{
@@ -17,7 +19,9 @@ const Home = () => {
 
             <S.UserName>Cíntia Schirmann</S.UserName>
           </S.User>
-        </S.UserInfo>
+          </S.UserInfo>
+          <S.Icon name="power"/>
+        </S.UserWrapper>
       </S.Header>
     </S.Container>
   );
