@@ -25,9 +25,11 @@ const Home = () => {
         </S.UserWrapper>
       </S.Header>
 
+      <S.HightlightCards >
       <HightlightCard/>
       <HightlightCard/>
       <HightlightCard/>
+      </S.HightlightCards>
     </S.Container>
   );
 };
