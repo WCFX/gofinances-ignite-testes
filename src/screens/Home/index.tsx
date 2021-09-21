@@ -26,9 +26,22 @@ const Home = () => {
       </S.Header>
 
       <S.HightlightCards >
-      <HightlightCard/>
-      <HightlightCard/>
-      <HightlightCard/>
+        <HightlightCard
+          type="up"
+          title="Entradas"
+          amount="R$17.400,00"
+          lastTransaction="Ultima entrada dia 15 de setembro." />
+        <HightlightCard
+          type="down"
+          title="Saidas"
+          amount="R$4.400,00"
+          lastTransaction="Ultima saída dia 19 de setembro." />
+        <HightlightCard
+          type="total"
+          title="Total"
+          amount="R$13.400,00"
+          lastTransaction="01 á 30 setembro." />
+    
       </S.HightlightCards>
     </S.Container>
   );
