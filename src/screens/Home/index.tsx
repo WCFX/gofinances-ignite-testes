@@ -1,4 +1,5 @@
 import React from "react";
+import { HightlightCard } from "../../components";
 
 
 import * as S from "./styles";
@@ -23,6 +24,10 @@ const Home = () => {
           <S.Icon name="power"/>
         </S.UserWrapper>
       </S.Header>
+
+      <HightlightCard/>
+      <HightlightCard/>
+      <HightlightCard/>
     </S.Container>
   );
 };
