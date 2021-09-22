@@ -77,4 +77,7 @@ export const Transactions = styled.View`
 export const Title = styled.Text`
   font-size: ${RFValue(20)};
   font-family: ${({ theme }) => theme.fonts.regular};
+  margin-bottom: 17px;
 `;
+
+export const TransactionList = styled.FlatList``;

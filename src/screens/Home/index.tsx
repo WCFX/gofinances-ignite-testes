@@ -1,10 +1,31 @@
-import React from "react";
+import React from 'react';
 
-import * as S from "./styles";
+import * as S from './styles';
 
-import { HightlightCard } from "../../components";
+import { HightlightCard, TransactionCard } from '../../components';
 
 const Home = () => {
+  const data = [
+    {
+      title: 'Desenvolvimento de site',
+      amount: 'R$12.000,00',
+      category: { name: 'Vendas', icon: 'dollar-sign' },
+      date: '15/09/2020',
+    },
+    {
+      title: 'Burguer King',
+      amount: 'R$130,00',
+      category: { name: 'ALimentação', icon: 'dollar-sign' },
+      date: '21/09/2020',
+    },
+    {
+      title: 'Pizza Cia do Sabor',
+      amount: 'R$160,00',
+      category: { name: 'Alimentação', icon: 'dollar-sign' },
+      date: '15/09/2020',
+    },
+  ];
+
   return (
     <S.Container>
       <S.Header>
@@ -12,7 +33,7 @@ const Home = () => {
           <S.UserInfo>
             <S.Photo
               source={{
-                uri: "https://avatars.githubusercontent.com/u/74629427?v=4",
+                uri: 'https://avatars.githubusercontent.com/u/74629427?v=4',
               }}
             />
             <S.User>
@@ -48,6 +69,11 @@ const Home = () => {
 
       <S.Transactions>
         <S.Title>Listagem</S.Title>
+        <S.TransactionList
+          data={data}
+          renderItem={({ item }) => <TransactionCard data={item} />}
+          showsVerticalScrollIndicator={false}
+        />
       </S.Transactions>
     </S.Container>
   );
