@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.0",
+    "@expo/vector-icons": "^12.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "expo": "~41.0.1",
@@ -31,16 +32,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@react-native-community/eslint-config": "^2.0.0",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@types/styled-components-react-native": "^5.1.1",
-    "babel-preset-expo": "~8.3.0",
-    "jest-expo": "~41.0.0",
-    "typescript": "~4.1.0",
-    "@react-native-community/eslint-config": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "babel-eslint": "^10.1.0",
+    "babel-preset-expo": "~8.3.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.0.0",
@@ -51,7 +50,10 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest-expo": "~41.0.0",
+    "prettier": "^2.3.2",
+    "typescript": "~4.1.0"
   },
   "jest": {
     "preset": "react-native"
