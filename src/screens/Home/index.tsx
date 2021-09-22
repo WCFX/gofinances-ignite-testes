@@ -45,6 +45,10 @@ const Home = () => {
           lastTransaction="01 á 30 setembro."
         />
       </S.HightlightCards>
+
+      <S.Transactions>
+        <S.Title>Listagem</S.Title>
+      </S.Transactions>
     </S.Container>
   );
 };
