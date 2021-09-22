@@ -1,0 +1,1 @@
+export { default as HightlightCard } from './HightligthCard';
