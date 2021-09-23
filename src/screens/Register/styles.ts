@@ -22,8 +22,10 @@ export const Title = styled.Text`
 `;
 
 export const Form = styled.View`
+  justify-content: space-between;
   flex: 1;
   width: 100%;
 
   padding: 24px;
 `;
+export const Fields = styled.View``;
