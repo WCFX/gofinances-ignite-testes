@@ -3,25 +3,36 @@ import React from 'react';
 import * as S from './styles';
 
 import { HightlightCard, TransactionCard } from '../../components';
+import { TransactionCardProps } from '../../components/TransactionCard';
+
+export interface DataListProps extends TransactionCardProps {
+  id: string;
+}
 
 const Home = () => {
-  const data = [
+  const data: DataListProps[] = [
     {
+      id: '1',
+      type: 'positive',
       title: 'Desenvolvimento de site',
       amount: 'R$12.000,00',
       category: { name: 'Vendas', icon: 'dollar-sign' },
       date: '15/09/2020',
     },
     {
+      id: '2',
+      type: 'negative',
       title: 'Burguer King',
       amount: 'R$130,00',
-      category: { name: 'ALimentação', icon: 'dollar-sign' },
+      category: { name: 'Alimentação', icon: 'coffee' },
       date: '21/09/2020',
     },
     {
+      id: '3',
+      type: 'negative',
       title: 'Pizza Cia do Sabor',
       amount: 'R$160,00',
-      category: { name: 'Alimentação', icon: 'dollar-sign' },
+      category: { name: 'Alimentação', icon: 'shopping-bag' },
       date: '15/09/2020',
     },
   ];
@@ -71,8 +82,8 @@ const Home = () => {
         <S.Title>Listagem</S.Title>
         <S.TransactionList
           data={data}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => <TransactionCard data={item} />}
-          showsVerticalScrollIndicator={false}
         />
       </S.Transactions>
     </S.Container>
