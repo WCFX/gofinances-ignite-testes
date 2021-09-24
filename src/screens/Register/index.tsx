@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as S from './styles';
 
 import Button from '../../components/Forms/Button';
+import CardSelectButton from '../../components/Forms/CardSelectButton';
 import Input from '../../components/Forms/Input';
 import TransactionTypeButton from '../../components/Forms/TransactionTypeButton';
 
@@ -36,6 +37,8 @@ const Register = () => {
               isActive={transactiontype === 'down'}
             />
           </S.TransactionsTypes>
+
+          <CardSelectButton title="Categoria" />
         </S.Fields>
 
         <Button title="Enviar" />
