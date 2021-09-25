@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import * as S from './styles';
 
 import Button from '../../components/Forms/Button';
+import CardSelectButton from '../../components/Forms/CardSelectButton';
 import Input from '../../components/Forms/Input';
+import TransactionTypeButton from '../../components/Forms/TransactionTypeButton';
 
 const Register = () => {
+  const [transactiontype, setTransactiontype] = useState('');
+
+  function handleTransactionsTypeSelect(type: 'up' | 'down') {
+    setTransactiontype(type);
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -15,6 +23,22 @@ const Register = () => {
         <S.Fields>
           <Input placeholder=" Nome" />
           <Input placeholder="Preço" />
+          <S.TransactionsTypes>
+            <TransactionTypeButton
+              type="up"
+              title="Income"
+              onPress={() => handleTransactionsTypeSelect('up')}
+              isActive={transactiontype === 'up'}
+            />
+            <TransactionTypeButton
+              type="down"
+              title="Outcome"
+              onPress={() => handleTransactionsTypeSelect('down')}
+              isActive={transactiontype === 'down'}
+            />
+          </S.TransactionsTypes>
+
+          <CardSelectButton title="Categoria" />
         </S.Fields>
 
         <Button title="Enviar" />
