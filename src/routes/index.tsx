@@ -9,7 +9,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 const Routes = () => {
   return (
     <Navigator
-      initialRouteName="CategorySelect"
+      initialRouteName="Register"
       screenOptions={{ headerShown: false }}
     >
       <Screen name="Home" component={Views.Home} />

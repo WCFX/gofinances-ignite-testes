@@ -13,7 +13,7 @@ interface Category {
 }
 
 interface Props {
-  category: string;
+  category: Category;
   setCategory: (category: Category) => void;
   closeSelectCategory: () => void;
 }
@@ -42,7 +42,7 @@ const CategorySelect = ({
         ItemSeparatorComponent={() => <S.Separator />}
       />
       <S.Footer>
-        <Button title="Selecionar" />
+        <Button title="Selecionar" onPress={closeSelectCategory} />
       </S.Footer>
     </S.Container>
   );
