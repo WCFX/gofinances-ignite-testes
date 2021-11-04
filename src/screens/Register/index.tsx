@@ -55,7 +55,7 @@ const Register = () => {
           </S.TransactionsTypes>
 
           <CardSelectButton
-            title="Categoria"
+            title={category.name}
             onPress={handleOpenSelectCategoryModal}
           />
         </S.Fields>
