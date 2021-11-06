@@ -4,3 +4,4 @@ export { default as Input } from './Forms/Input';
 export { default as Button } from './Forms/Button';
 export { default as TransactionTypeButton } from './Forms/TransactionTypeButton';
 export { default as CardSelectButton } from './Forms/CardSelectButton';
+export { default as InputForm } from './Forms/InputForm';
