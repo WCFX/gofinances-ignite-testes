@@ -53,7 +53,9 @@ const Home = () => {
               <S.UserName>Cíntia Schirmann</S.UserName>
             </S.User>
           </S.UserInfo>
-          <S.Icon name="power" />
+          <S.LogoutButton onpress={() => {}}>
+            <S.Icon name="power" />
+          </S.LogoutButton>
         </S.UserWrapper>
       </S.Header>
 

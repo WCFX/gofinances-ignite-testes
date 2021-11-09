@@ -23,11 +23,11 @@ const schema = Yup.object().shape({
   amount: Yup.number()
     .typeError('Informe um valor numérico')
     .positive('O valor não pode ser negativo')
-    .required('O valor é obrigatório'),
+    .required('O Valor é obrigatorio'),
 });
 
 const Register = () => {
-  const [transactiontype, setTransactiontype] = useState('');
+  const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
   const [category, setCategory] = useState({
@@ -35,12 +35,16 @@ const Register = () => {
     name: 'Categoria',
   });
 
-  const { control, handleSubmit } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
   function handleTransactionsTypeSelect(type: 'up' | 'down') {
-    setTransactiontype(type);
+    setTransactionType(type);
   }
 
   function handleOpenSelectCategoryModal() {
@@ -52,7 +56,7 @@ const Register = () => {
   }
 
   function handleRegister(form: FormData) {
-    if (!transactiontype) {
+    if (!transactionType) {
       return Alert.alert('Selecione o tipo da transação');
     }
     if (category.key === 'category') {
@@ -62,12 +66,18 @@ const Register = () => {
     const data = {
       name: form.name,
       amount: form.amount,
-      transactiontype,
+      transactionType,
       category: category.key,
     };
 
-    console.log(form);
+    console.log(data);
   }
+
+  // const navigation = useNavigation();
+
+  // function handleGoBack() {
+  //   navigation.navigate('Home');
+  // }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -83,25 +93,27 @@ const Register = () => {
               placeholder=" Nome"
               autoCapitalize="sentences"
               autoCorrect={false}
+              error={errors.name && errors.name.message}
             />
             <InputForm
               name="amount"
               control={control}
               placeholder="Preço"
               keyboardType="numeric"
+              error={errors.amount && errors.amount.message}
             />
             <S.TransactionsTypes>
               <TransactionTypeButton
                 type="up"
                 title="Income"
                 onPress={() => handleTransactionsTypeSelect('up')}
-                isActive={transactiontype === 'up'}
+                isActive={transactionType === 'up'}
               />
               <TransactionTypeButton
                 type="down"
                 title="Outcome"
                 onPress={() => handleTransactionsTypeSelect('down')}
-                isActive={transactiontype === 'down'}
+                isActive={transactionType === 'down'}
               />
             </S.TransactionsTypes>
 
