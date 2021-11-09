@@ -12,7 +12,7 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from './global/styles/theme';
 
-import Routes from './routes';
+import BottomRoutes from './routes/bottom.routes';
 
 const App = () => {
   const [fonstLoaded] = useFonts({
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <Routes />
+        <BottomRoutes />
       </NavigationContainer>
     </ThemeProvider>
   );
