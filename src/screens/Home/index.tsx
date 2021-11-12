@@ -67,7 +67,11 @@ const Home = () => {
               <S.UserName>Cíntia Schirmann</S.UserName>
             </S.User>
           </S.UserInfo>
-          <S.LogoutButton onpress={() => {}}>
+          <S.LogoutButton
+            onPress={() => {
+              console.log('hellow');
+            }}
+          >
             <S.Icon name="power" />
           </S.LogoutButton>
         </S.UserWrapper>
