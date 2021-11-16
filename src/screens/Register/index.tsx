@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
@@ -94,7 +96,7 @@ const Register = () => {
       navigation.navigate('Listagem');
     } catch (error) {
       console.log(error);
-      Alert.alert('não foi possivel salvar');
+      Alert.alert('Não foi possivel salvar');
     }
   }
 
