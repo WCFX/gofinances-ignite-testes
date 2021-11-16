@@ -1,8 +1,13 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
 import { yupResolver } from '@hookform/resolvers/yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
+import uuid from 'react-native-uuid';
 import * as Yup from 'yup';
 
 import * as S from './styles';
@@ -23,11 +28,11 @@ const schema = Yup.object().shape({
   amount: Yup.number()
     .typeError('Informe um valor numérico')
     .positive('O valor não pode ser negativo')
-    .required('O valor é obrigatório'),
+    .required('O Valor é obrigatorio'),
 });
 
 const Register = () => {
-  const [transactiontype, setTransactiontype] = useState('');
+  const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
   const [category, setCategory] = useState({
@@ -35,12 +40,19 @@ const Register = () => {
     name: 'Categoria',
   });
 
-  const { control, handleSubmit } = useForm({
+  const navigation = useNavigation();
+
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
   function handleTransactionsTypeSelect(type: 'up' | 'down') {
-    setTransactiontype(type);
+    setTransactionType(type);
   }
 
   function handleOpenSelectCategoryModal() {
@@ -51,23 +63,48 @@ const Register = () => {
     setCategoryModalOpen(false);
   }
 
-  function handleRegister(form: FormData) {
-    if (!transactiontype) {
+  async function handleRegister(form: FormData) {
+    if (!transactionType) {
       return Alert.alert('Selecione o tipo da transação');
     }
     if (category.key === 'category') {
       return Alert.alert('Selecione uma categoria');
     }
 
-    const data = {
+    const newTransaction = {
+      id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
-      transactiontype,
+      transactionType,
       category: category.key,
+      date: new Date(),
     };
 
-    console.log(form);
+    try {
+      const dataKey = '@gofinances:transactions';
+      const data = await AsyncStorage.getItem(dataKey);
+      const currentData = data ? JSON.parse(data) : [];
+
+      const dataFormatted = [...currentData, newTransaction];
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
+
+      reset();
+      setTransactionType('');
+      setCategory({ key: 'category', name: 'Categoria' });
+
+      navigation.navigate('Listagem');
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Não foi possivel salvar');
+    }
   }
+
+  // const navigation = useNavigation();
+
+  // function handleGoBack() {
+  //   navigation.navigate('Home');
+  // }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -83,25 +120,27 @@ const Register = () => {
               placeholder=" Nome"
               autoCapitalize="sentences"
               autoCorrect={false}
+              error={errors.name && errors.name.message}
             />
             <InputForm
               name="amount"
               control={control}
               placeholder="Preço"
               keyboardType="numeric"
+              error={errors.amount && errors.amount.message}
             />
             <S.TransactionsTypes>
               <TransactionTypeButton
                 type="up"
                 title="Income"
                 onPress={() => handleTransactionsTypeSelect('up')}
-                isActive={transactiontype === 'up'}
+                isActive={transactionType === 'up'}
               />
               <TransactionTypeButton
                 type="down"
                 title="Outcome"
                 onPress={() => handleTransactionsTypeSelect('down')}
-                isActive={transactiontype === 'down'}
+                isActive={transactionType === 'down'}
               />
             </S.TransactionsTypes>
 
