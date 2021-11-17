@@ -61,7 +61,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest-expo": "~41.0.0",
     "prettier": "^2.3.2",
-    "typescript": "~4.1.0"
+    "typescript": "~4.1.0",
+    "typescript-styled-plugin": "^0.18.1"
   },
   "jest": {
     "preset": "react-native"
