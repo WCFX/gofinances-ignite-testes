@@ -20,7 +20,7 @@ const Home = () => {
 
     const transactions = response ? JSON.parse(response) : [];
 
-    const transactionsFormated: DataListProps[] = transactions.map(
+    const transactionsFormatted: DataListProps[] = transactions.map(
       (item: DataListProps) => {
         const amount = Number(item.amount).toLocaleString('pt-BR', {
           style: 'currency',
@@ -44,7 +44,7 @@ const Home = () => {
       },
     );
 
-    setData(transactionsFormated);
+    setData(transactionsFormatted);
   }
 
   useEffect(() => {
