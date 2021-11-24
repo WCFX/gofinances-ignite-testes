@@ -3,10 +3,10 @@ import React from 'react';
 import * as S from './styles';
 
 interface Props {
+  type: 'up' | 'down' | 'total';
   title: string;
   amount: string;
   lastTransaction: string;
-  type: 'up' | 'down' | 'total';
 }
 
 const icon = {
@@ -15,7 +15,7 @@ const icon = {
   total: 'dollar-sign',
 };
 
-const HighlightCard = ({ type, title, amount, lastTransaction }: Props) => {
+const HightligthCard = ({ type, title, amount, lastTransaction }: Props) => {
   return (
     <S.Container type={type}>
       <S.Header>
@@ -31,4 +31,4 @@ const HighlightCard = ({ type, title, amount, lastTransaction }: Props) => {
   );
 };
 
-export default HighlightCard;
+export default HightligthCard;
