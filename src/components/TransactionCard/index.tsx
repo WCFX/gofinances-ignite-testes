@@ -17,7 +17,7 @@ interface Props {
 }
 
 const TransactionCard = ({ data }: Props) => {
-  const category = categories.filter((item) => item.key === data.category)[0];
+  const [category] = categories.filter((item) => item.key === data.category);
   return (
     <S.Container>
       <S.Title>{data.name}</S.Title>
