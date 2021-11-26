@@ -2,6 +2,8 @@ import React from 'react';
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
+import { StatusBar } from 'react-native';
+
 import {
   useFonts,
   Poppins_400Regular,
@@ -29,6 +31,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
+        <StatusBar barStyle="light-content" />
         <BottomRoutes />
       </NavigationContainer>
     </ThemeProvider>
