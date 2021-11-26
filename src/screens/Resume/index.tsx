@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -31,6 +32,7 @@ interface CategoryData {
 }
 
 const Resume = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [totalByCategories, setTotalByCategories] = useState<CategoryData[]>(
     [],
@@ -98,6 +100,7 @@ const Resume = () => {
     });
 
     setTotalByCategories(totalByCategory);
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -110,52 +113,58 @@ const Resume = () => {
         <S.Title>Resumo por categoria</S.Title>
       </S.Header>
 
-      <S.Content
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          padding: 24,
-          paddingBottom: useBottomTabBarHeight(),
-        }}
-      >
-        <S.MonthSelect>
-          <S.MonthSelectIcon onPress={() => handleDateChange('prev')}>
-            <S.SelectIcon name="chevron-left" />
-          </S.MonthSelectIcon>
+      {isLoading ? (
+        <S.LoadContainer>
+          <ActivityIndicator size="large" color={theme.colors.primary} />
+        </S.LoadContainer>
+      ) : (
+        <S.Content
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            padding: 24,
+            paddingBottom: useBottomTabBarHeight(),
+          }}
+        >
+          <S.MonthSelect>
+            <S.MonthSelectIcon onPress={() => handleDateChange('prev')}>
+              <S.SelectIcon name="chevron-left" />
+            </S.MonthSelectIcon>
 
-          <S.Month>
-            {format(selectedDate, 'MMMM, yyyy', { locale: ptBR })}
-          </S.Month>
+            <S.Month>
+              {format(selectedDate, 'MMMM, yyyy', { locale: ptBR })}
+            </S.Month>
 
-          <S.MonthSelectIcon onPress={() => handleDateChange('next')}>
-            <S.SelectIcon name="chevron-right" />
-          </S.MonthSelectIcon>
-        </S.MonthSelect>
+            <S.MonthSelectIcon onPress={() => handleDateChange('next')}>
+              <S.SelectIcon name="chevron-right" />
+            </S.MonthSelectIcon>
+          </S.MonthSelect>
 
-        <S.ChartContainer>
-          <VictoryPie
-            data={totalByCategories}
-            colorScale={totalByCategories.map((category) => category.color)}
-            style={{
-              labels: {
-                fontSize: RFValue(18),
-                fontWeight: 'bold',
-                fill: theme.colors.shape,
-              },
-            }}
-            labelRadius={50}
-            x="percent"
-            y="total"
-          />
-        </S.ChartContainer>
-        {totalByCategories.map((item) => (
-          <HistoryCard
-            key={item.key}
-            title={item.name}
-            amount={item.totalFormatted}
-            color={item.color}
-          />
-        ))}
-      </S.Content>
+          <S.ChartContainer>
+            <VictoryPie
+              data={totalByCategories}
+              colorScale={totalByCategories.map((category) => category.color)}
+              style={{
+                labels: {
+                  fontSize: RFValue(18),
+                  fontWeight: 'bold',
+                  fill: theme.colors.shape,
+                },
+              }}
+              labelRadius={80}
+              x="percent"
+              y="total"
+            />
+          </S.ChartContainer>
+          {totalByCategories.map((item) => (
+            <HistoryCard
+              key={item.key}
+              title={item.name}
+              amount={item.totalFormatted}
+              color={item.color}
+            />
+          ))}
+        </S.Content>
+      )}
     </S.Container>
   );
 };
