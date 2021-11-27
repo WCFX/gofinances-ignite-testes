@@ -16,7 +16,8 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from './global/styles/theme';
 
-import BottomRoutes from './routes/bottom.routes';
+// import BottomRoutes from './routes/bottom.routes';
+import { SingIn } from './screens';
 
 const App = () => {
   const [fonstLoaded] = useFonts({
@@ -32,7 +33,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" />
-        <BottomRoutes />
+        <SingIn />
+        {/* <BottomRoutes /> */}
       </NavigationContainer>
     </ThemeProvider>
   );
