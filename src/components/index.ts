@@ -6,3 +6,4 @@ export { default as TransactionTypeButton } from './Forms/TransactionTypeButton'
 export { default as CardSelectButton } from './Forms/CardSelectButton';
 export { default as InputForm } from './Forms/InputForm';
 export { default as HistoryCard } from './HistoryCard';
+export { default as SingInSocialButton } from './SingInSocialButton';
