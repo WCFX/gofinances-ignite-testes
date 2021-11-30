@@ -17,6 +17,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './global/styles/theme';
 
 // import BottomRoutes from './routes/bottom.routes';
+import { AuthProvider } from './hooks/auth';
 import { SingIn } from './screens';
 
 const App = () => {
@@ -33,7 +34,10 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" />
-        <SingIn />
+        <AuthProvider>
+          <SingIn />
+        </AuthProvider>
+
         {/* <BottomRoutes /> */}
       </NavigationContainer>
     </ThemeProvider>
