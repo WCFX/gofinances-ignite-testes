@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { Alert } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 
@@ -11,13 +12,22 @@ import { SingInSocialButton } from '../../components';
 import { useAuth } from '../../hooks/auth';
 
 const SingIn = () => {
-  const { user } = useAuth();
+  const { singInWithGoogle } = useAuth();
+
+  async function handleSingInWithGoogle() {
+    try {
+      await singInWithGoogle();
+    } catch (error) {
+      console.log(error);
+      Alert.alert('não foi possivel conectar com a google');
+    }
+  }
 
   return (
     <S.Container>
       <S.Header>
         <S.TitleWrapper>
-          <LogoSvg width={RFValue(120)} heigth={RFValue(68)} />
+          <LogoSvg width={RFValue(120)} height={RFValue(68)} />
 
           <S.Title>
             Controle suas {'\n'}
@@ -32,7 +42,11 @@ const SingIn = () => {
       </S.Header>
       <S.Footer>
         <S.FooterWrapper>
-          <SingInSocialButton title="Entrar com Google" svg={GoogleSvg} />
+          <SingInSocialButton
+            title="Entrar com Google"
+            svg={GoogleSvg}
+            onPress={handleSingInWithGoogle}
+          />
           <SingInSocialButton title="Entrar com Apple" svg={AppleSvg} />
         </S.FooterWrapper>
       </S.Footer>
