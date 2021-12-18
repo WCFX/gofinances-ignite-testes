@@ -16,6 +16,7 @@ import Button from '../../components/Forms/Button';
 import CardSelectButton from '../../components/Forms/CardSelectButton';
 import InputForm from '../../components/Forms/InputForm';
 import TransactionTypeButton from '../../components/Forms/TransactionTypeButton';
+import { useAuth } from '../../hooks/auth';
 import CategorySelect from '../CategorySelect';
 
 interface FormData {
@@ -34,6 +35,8 @@ const schema = Yup.object().shape({
 const Register = () => {
   const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+
+  const { user } = useAuth();
 
   const [category, setCategory] = useState({
     key: 'category',
@@ -81,7 +84,7 @@ const Register = () => {
     };
 
     try {
-      const dataKey = '@gofinances:transactions';
+      const dataKey = `@gofinances:transactions_user:${user.id}`;
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
 
