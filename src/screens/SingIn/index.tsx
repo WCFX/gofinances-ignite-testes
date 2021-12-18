@@ -1,7 +1,8 @@
-import React from 'react';
-import { Alert } from 'react-native';
+import React, { useState } from 'react';
+import { ActivityIndicator, Alert } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'styled-components';
 
 import * as S from './styles';
 
@@ -12,14 +13,30 @@ import { SingInSocialButton } from '../../components';
 import { useAuth } from '../../hooks/auth';
 
 const SingIn = () => {
-  const { singInWithGoogle } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const { singInWithGoogle, singInWithApple } = useAuth();
+
+  const theme = useTheme();
 
   async function handleSingInWithGoogle() {
     try {
-      await singInWithGoogle();
+      setIsLoading(true);
+      return await singInWithGoogle();
     } catch (error) {
       console.log(error);
-      Alert.alert('não foi possivel conectar com a google');
+      Alert.alert('Não foi possivel conectar com a conta Google.');
+      setIsLoading(false);
+    }
+  }
+
+  async function handleSingInWithApple() {
+    try {
+      setIsLoading(true);
+      return await singInWithApple();
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Não foi possivel conectar com a conta Apple.');
+      setIsLoading(false);
     }
   }
 
@@ -45,10 +62,22 @@ const SingIn = () => {
           <SingInSocialButton
             title="Entrar com Google"
             svg={GoogleSvg}
+            // eslint-disable-next-line react/jsx-no-bind
             onPress={handleSingInWithGoogle}
           />
-          <SingInSocialButton title="Entrar com Apple" svg={AppleSvg} />
+          <SingInSocialButton
+            title="Entrar com Apple"
+            svg={AppleSvg}
+            // eslint-disable-next-line react/jsx-no-bind
+            onPress={handleSingInWithApple}
+          />
         </S.FooterWrapper>
+        {isLoading && (
+          <ActivityIndicator
+            color={theme.colors.shape}
+            style={{ marginTop: 18 }}
+          />
+        )}
       </S.Footer>
     </S.Container>
   );
