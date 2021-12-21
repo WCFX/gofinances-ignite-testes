@@ -13,6 +13,7 @@ import { VictoryPie } from 'victory-native';
 import * as S from './styles';
 
 import { HistoryCard } from '../../components';
+import { useAuth } from '../../hooks/auth';
 import { categories } from '../../utils/categories';
 
 interface TransactionData {
@@ -40,18 +41,19 @@ const Resume = () => {
   );
 
   const theme = useTheme();
+  const { user } = useAuth();
 
   function handleDateChange(action: 'next' | 'prev') {
     if (action === 'next') {
-      const newDate = setSelectedDate(addMonths(selectedDate, 1));
+      setSelectedDate(addMonths(selectedDate, 1));
     } else {
-      const newDate = setSelectedDate(subMonths(selectedDate, 1));
+      setSelectedDate(subMonths(selectedDate, 1));
     }
   }
 
   async function loadData() {
     setIsLoading(true);
-    const dataKey = '@gofinances:transactions';
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(dataKey);
     const responseFormatted = response ? JSON.parse(response) : [];
 

@@ -4,7 +4,7 @@ import * as S from './styles';
 
 import { categories } from '../../utils/categories';
 
-export interface TransactionCardProps {
+export interface DataProps {
   type: 'positive' | 'negative';
   name: string;
   amount: string;
@@ -12,17 +12,18 @@ export interface TransactionCardProps {
   date: string;
 }
 
-interface Props {
-  data: TransactionCardProps;
+interface TransactionCardProps {
+  data: DataProps;
 }
 
-const TransactionCard = ({ data }: Props) => {
+const TransactionCard = ({ data }: TransactionCardProps) => {
   const [category] = categories.filter((item) => item.key === data.category);
+
   return (
     <S.Container>
       <S.Title>{data.name}</S.Title>
       <S.Amount type={data.type}>
-        {data.type === 'negative' && '- '}
+        {data.type === 'negative' && '-'}
         {data.amount}
       </S.Amount>
 
@@ -31,11 +32,9 @@ const TransactionCard = ({ data }: Props) => {
           <S.Icon name={category.icon} />
           <S.CategoryName>{category.name}</S.CategoryName>
         </S.Category>
-
         <S.Date>{data.date}</S.Date>
       </S.Footer>
     </S.Container>
   );
 };
-
 export default TransactionCard;

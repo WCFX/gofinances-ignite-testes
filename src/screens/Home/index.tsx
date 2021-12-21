@@ -1,3 +1,4 @@
+/* eslint-disable prefer-spread */
 import React, { useState, useEffect, useCallback } from 'react';
 import { ActivityIndicator } from 'react-native';
 
@@ -9,6 +10,7 @@ import * as S from './styles';
 
 import { HightligthCard, TransactionCard } from '../../components';
 import { TransactionCardProps } from '../../components/TransactionCard';
+import { useAuth } from '../../hooks/auth';
 
 export interface DataListProps extends TransactionCardProps {
   id: string;
@@ -31,17 +33,26 @@ const Home = () => {
     {} as HightlightData,
   );
   const theme = useTheme();
+  const { signOut, user } = useAuth();
 
   function getLastTransactionDate(
     collection: DataListProps[],
     type: 'positive' | 'negative',
   ) {
+    const collectionFilttered = collection.filter(
+      (transaction) => transaction.type === type,
+    );
+
+    if (collectionFilttered.length === 0) {
+      return 0;
+    }
+
     const lastTransation = new Date(
       Math.max.apply(
         Math,
-        collection
-          .filter((transaction) => transaction.type === type)
-          .map((transaction) => new Date(transaction.date).getTime()),
+        collectionFilttered.map((transaction) =>
+          new Date(transaction.date).getTime(),
+        ),
       ),
     );
 
@@ -52,7 +63,7 @@ const Home = () => {
   }
 
   async function loadTransactions() {
-    const dataKey = '@gofinances:transactions';
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(dataKey);
 
     const transactions = response ? JSON.parse(response) : [];
@@ -101,7 +112,10 @@ const Home = () => {
       'negative',
     );
 
-    const totalInterval = `01 á ${lastTransactionExpensives}`;
+    const totalInterval =
+      lastTransactionExpensives === 0
+        ? 'Não há movimentações'
+        : `01 á ${lastTransactionExpensives}`;
 
     const total = entriesTotal - expensiveTotal;
 
@@ -111,14 +125,20 @@ const Home = () => {
           style: 'currency',
           currency: 'BRL',
         }),
-        lastTransaction: `Última entrada dia ${lastTransactionEntries}`,
+        lastTransaction:
+          lastTransactionEntries === 0
+            ? 'Não há transações'
+            : `Última entrada dia ${lastTransactionEntries}`,
       },
       expensive: {
         amount: expensiveTotal.toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL',
         }),
-        lastTransaction: `Última saída dia ${lastTransactionEntries}`,
+        lastTransaction:
+          lastTransactionExpensives === 0
+            ? 'Não há transações'
+            : `Última saída dia ${lastTransactionExpensives}`,
       },
       total: {
         amount: total.toLocaleString('pt-BR', {
@@ -160,14 +180,10 @@ const Home = () => {
                 <S.User>
                   <S.UserGreeting> Olá, </S.UserGreeting>
 
-                  <S.UserName>Cíntia Schirmann</S.UserName>
+                  <S.UserName>{user.name}</S.UserName>
                 </S.User>
               </S.UserInfo>
-              <S.LogoutButton
-                onPress={() => {
-                  console.log('hellow');
-                }}
-              >
+              <S.LogoutButton onPress={signOut}>
                 <S.Icon name="power" />
               </S.LogoutButton>
             </S.UserWrapper>
