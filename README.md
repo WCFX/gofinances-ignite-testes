@@ -12,7 +12,7 @@
 <p align="center">
   
 
-  <a href="https://github.com/leoskrr/GoMarketplace/commits/master">
+  <a href="https://github.com/SchirmannDev/gofinances-ignite/commits/develop">
     <img alt="GitHub last commit" src="https://img.shields.io/badge/last%20commit-december-2021-yellowgreen">
   </a>
 
@@ -122,7 +122,7 @@ sudo expo start
 
 ## ✍️ Autores <a name = "authors"></a>
 
-- [@SchirmannDev](https://github.com/kylelobo) - Developer Mobile Jr
+- [@SchirmannDev](https://github.com/SchirmannDev) - Developer Mobile Jr
 
 ## 🎉 Conquistas <a name = "acknowledgement"></a>
 
@@ -134,7 +134,11 @@ sudo expo start
 
 
 
-<p align="center">With 💜, by Cíntia Schirmann.</p>
+<div align="center">
+  <p>Desenvolvido por Cintia Schirmann</p>
+
+  [![Linkedin Badge](https://img.shields.io/badge/-Cintia%20Schirmann-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rodrigo-gon%C3%A7alves-santana/)](https://www.linkedin.com/in/schirmann/) 
+</div>
 
 [nodejs]: https://nodejs.org/
 [yarn]: https://yarnpkg.com/
