@@ -36,7 +36,17 @@
 ## 📱 Projeto
 
 <p align="center">
-      <img width=200px height=50% src="https:user" alt="White Mode Login">
+       <img width=200px height=50% src="https:user" alt="White Mode Login">
+    
+        <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132333-77dbdfac-39a7-43f5-bbb3-5c8987a05ae5.jpg" alt="Screen Login>
+        <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132393-8e4fa18c-cb0d-419f-bd2d-104957896767.jpg" alt="MenuInicial">
+
+       
+
+       <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132400-6f82db68-80ee-405a-bdc2-18bfeead451c.jpg" alt="Tela de Resumo">
+       <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132403-05bc6cc8-6ff6-49dd-baf8-d1ce4ef217f6.jpg" alt="Categorias">
+  
+     
   
 
 </p>
@@ -48,7 +58,7 @@
 </p>
 
 <h5 align="center">
-  <img src="./src/assets/dashboard.png"/>
+ <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132398-da9bd033-5a43-4dbd-a03b-9c957e6037d6.mp4" alt="Navegaçao">
 </h5>
 
 <h5 align="center">
