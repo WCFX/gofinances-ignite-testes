@@ -19,35 +19,17 @@
   <img src="https://img.shields.io/badge/tests-100%25-brightgreen"/>
 
 <p align="center">
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-como-contribuir">Como contribuir</a>
-</p>
+ 
 
-<h2 align="center">Criado com as Tecnologias :rocket: </h2>
-<h3>
-    
-    <img src="./assets/react-native.png" height="18"/> React Native
-    
-    
-    <img src="./assets/ts.png" height="18" /> Typescript
-</h3>
 
 ## 📱 Projeto
 
 <p align="center">
-       <img width=200px height=50% src="https:user" alt="White Mode Login">
-    
-        <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132333-77dbdfac-39a7-43f5-bbb3-5c8987a05ae5.jpg" alt="Screen Login>
-        <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132393-8e4fa18c-cb0d-419f-bd2d-104957896767.jpg" alt="MenuInicial">
-
-       
-
-       <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132400-6f82db68-80ee-405a-bdc2-18bfeead451c.jpg" alt="Tela de Resumo">
-       <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132403-05bc6cc8-6ff6-49dd-baf8-d1ce4ef217f6.jpg" alt="Categorias">
-  
-     
-  
+       <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132333-77dbdfac-39a7-43f5-bbb3-5c8987a05ae5.jpg" alt="White Mode Login">
+  <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154137212-958af56e-1cdf-4112-9ceb-acebf5af5144.jpg" alt="Menu">
+  <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154137323-ec3b36b8-2eb7-416b-9fa7-1d86d89e8a74.jpg" alt="Resumo">
+  <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154137347-3ce844e8-8f59-4ee9-8bb2-78c5ec764b2c.jpg" alt="Categoria">
+  <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154140088-8e6ae30f-2804-427a-b2e8-5f8ec0987747.jpeg" alt="Navegacao">
 
 </p>
 
@@ -58,12 +40,10 @@
 </p>
 
 <h5 align="center">
- <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154132398-da9bd033-5a43-4dbd-a03b-9c957e6037d6.mp4" alt="Navegaçao">
+ <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154137262-81388171-dbb1-4e4a-859a-2346d8406434.mp4" alt="Navegaçao">
 </h5>
 
-<h5 align="center">
-  <img src="./src/assets/upload.png"/>
-</h5>
+
 
 <p align="center"> Controle suas finanças.
     <br>
