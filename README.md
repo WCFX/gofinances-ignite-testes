@@ -10,16 +10,12 @@
 </h3>
 
 <p align="center">
-  
 
-  <a href="https://github.com/SchirmannDev/gofinances-ignite/commits/develop">
-    <img alt="GitHub last commit" src="https://img.shields.io/badge/last%20commit-december-2021-yellowgreen">
-  </a>
 
   <img src="https://img.shields.io/badge/tests-100%25-brightgreen"/>
 
 <p align="center">
- 
+
 
 
 ## 📱 Projeto
@@ -38,11 +34,6 @@
   O GoFinances é uma aplicação mobile para gerenciamento de entrada e saida do seu dinheiro. Essa aplicação foi construída durante o Ignite da <a href="https://rocketseat.com.br/">Rocketseat</a>
   🚀
 </p>
-
-<h5 align="center">
- <img width=200px height=50% src="https://user-images.githubusercontent.com/74629427/154137262-81388171-dbb1-4e4a-859a-2346d8406434.mp4" alt="Navegaçao">
-</h5>
-
 
 
 <p align="center"> Controle suas finanças.
@@ -127,7 +118,7 @@ sudo expo start
 <div align="center">
   <p>Desenvolvido por Cintia Schirmann</p>
 
-  [![Linkedin Badge](https://img.shields.io/badge/-Cintia%20Schirmann-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rodrigo-gon%C3%A7alves-santana/)](https://www.linkedin.com/in/schirmann/) 
+  [![Linkedin Badge](https://img.shields.io/badge/-Cintia%20Schirmann-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rodrigo-gon%C3%A7alves-santana/)](https://www.linkedin.com/in/schirmann/)
 </div>
 
 [nodejs]: https://nodejs.org/
