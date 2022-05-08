@@ -7,19 +7,21 @@ import * as S from './styles';
 
 import Input from '../Input';
 
-interface Props extends TextInputProps {
+export interface Props extends TextInputProps {
   control: Control;
   name: string;
   error: string;
 }
 
-const InputForm = ({ control, name, error, ...rest }: Props) => {
+const InputForm = ({ error, control, name, ...rest }: Props) => {
   return (
     <S.Container>
       <Controller
         control={control}
-        render={({ field: { onChange, value } }) => <Input {...rest} />}
         name={name}
+        render={({ field: { onChange, value } }) => (
+          <Input onChangeText={onChange} value={value} {...rest} />
+        )}
       />
       {error && <S.Error>{error}</S.Error>}
     </S.Container>

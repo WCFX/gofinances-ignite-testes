@@ -16,13 +16,7 @@ export const Container = styled.View<TypeProps>`
   margin-left: ${RFValue(10)}px;
   margin-right: ${RFValue(10)}px;
   margin-bottom: ${RFValue(10)}px;
-  shadow-color: #000;
-  shadow-offset: {
-    width: 0;
-    height: 4;
-  }
-  shadow-opacity: 0.3;
-  shadow-radius: 4.65;
+
   elevation: 8;
 `;
 

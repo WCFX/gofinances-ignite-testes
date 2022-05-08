@@ -1,4 +1,8 @@
 import React from 'react';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
+
+import { StatusBar } from 'react-native';
 
 import {
   useFonts,
@@ -6,13 +10,14 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
-import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 
 import theme from './global/styles/theme';
 
-import BottomRoutes from './routes/bottom.routes';
+import { useAuth } from './hooks/auth';
+import { AuthProvider } from './hooks/auth';
+import Routes from './routes';
 
 const App = () => {
   const [fonstLoaded] = useFonts({
@@ -20,15 +25,21 @@ const App = () => {
     Poppins_500Medium,
     Poppins_700Bold,
   });
-  if (!fonstLoaded) {
+
+  const { userStorageLoading } = useAuth();
+
+  if (!fonstLoaded || userStorageLoading) {
     return <AppLoading />;
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <BottomRoutes />
-      </NavigationContainer>
+      <StatusBar barStyle="light-content" />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+
+      {/* <BottomRoutes /> */}
     </ThemeProvider>
   );
 };
